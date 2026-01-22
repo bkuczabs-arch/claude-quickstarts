@@ -22,13 +22,13 @@
     <backend>
       <runtime>Node.js with Express</runtime>
       <database>SQLite with better-sqlite3</database>
-      <api_integration>Claude API for chat completions</api_integration>
+      <api_integration>Claude Agent SDK for agentic chat interactions</api_integration>
       <streaming>Server-Sent Events for streaming responses</streaming>
     </backend>
     <communication>
       <api>RESTful endpoints</api>
       <streaming>SSE for real-time message streaming</streaming>
-      <claude_api>Integration with Claude API using Anthropic SDK</claude_api>
+      <claude_api>Integration with Claude using Claude Agent SDK (@anthropic-ai/claude-agent-sdk)</claude_api>
     </communication>
   </technology_stack>
 
@@ -360,12 +360,12 @@
       - PUT /api/settings/custom-instructions
     </settings>
 
-    <claude_api>
-      - POST /api/claude/chat (proxy to Claude API)
-      - POST /api/claude/chat/stream (streaming proxy)
-      - GET /api/claude/models
-      - POST /api/claude/images/upload
-    </claude_api>
+    <claude_agent>
+      - POST /api/agent/chat (run agent conversation turn via Claude Agent SDK)
+      - POST /api/agent/chat/stream (streaming agent conversation via Claude Agent SDK)
+      - GET /api/agent/models (list available models)
+      - POST /api/agent/images/upload (upload images for multi-modal input)
+    </claude_agent>
   </api_endpoints_summary>
 
   <ui_layout>
@@ -523,7 +523,7 @@
       <title>Setup Project Foundation and Database</title>
       <tasks>
         - Initialize Express server with SQLite database
-        - Set up Claude API client with streaming support
+        - Set up Claude Agent SDK client with streaming support
         - Create database schema with migrations
         - Implement authentication endpoints
         - Set up basic CORS and middleware
